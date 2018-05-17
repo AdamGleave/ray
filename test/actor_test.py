@@ -49,10 +49,14 @@ class ActorAPI(unittest.TestCase):
                          (1, 1, "cd"))
 
         actor = Actor.remote(1, arg2="c", arg1=2)
-        self.assertEqual(ray.get(actor.get_values.remote(0, arg2="d")),
-                         (1, 4, "cd"))
-        self.assertEqual(ray.get(actor.get_values.remote(0, arg2="d", arg1=0)),
-                         (1, 2, "cd"))
+        self.assertEqual(
+            ray.get(actor.get_values.remote(0, arg2="d")), (1, 4, "cd"))
+        self.assertEqual(
+            ray.get(actor.get_values.remote(0, arg2="d", arg1=0)),
+            (1, 2, "cd"))
+        self.assertEqual(
+            ray.get(actor.get_values.remote(arg2="d", arg1=0, arg0=2)),
+            (3, 2, "cd"))
 
         # Make sure we get an exception if the constructor is called
         # incorrectly.
@@ -61,6 +65,9 @@ class ActorAPI(unittest.TestCase):
 
         with self.assertRaises(Exception):
             actor = Actor.remote(0, 1, 2, arg3=3)
+
+        with self.assertRaises(Exception):
+            actor = Actor.remote(0, arg0=1)
 
         # Make sure we get an exception if the method is called incorrectly.
         actor = Actor.remote(1)
