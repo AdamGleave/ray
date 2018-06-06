@@ -9,6 +9,11 @@ from __future__ import print_function
 # is a safety feature to prevent e.g. runaway node launches.
 AUTOSCALER_MAX_NUM_FAILURES = 5
 
+# The maximum number of nodes to launch in a single request.
+# Multiple requests may be made for this batch size, up to
+# the limit of AUTOSCALER_MAX_CONCURRENT_LAUNCHES.
+AUTOSCALER_MAX_LAUNCH_BATCH = 5
+
 # Max number of nodes to launch at a time.
 AUTOSCALER_MAX_CONCURRENT_LAUNCHES = 10
 
