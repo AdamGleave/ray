@@ -214,7 +214,7 @@ class NodeLauncher(threading.Thread):
                 TAG_NAME: "ray-{}-worker".format(
                     config["cluster_name"]),
                 TAG_RAY_NODE_TYPE: "Worker",
-                TAG_RAY_NODE_STATUS: "uninitialized",
+                TAG_RAY_NODE_STATUS: "Uninitialized",
                 TAG_RAY_LAUNCH_CONFIG: launch_hash,
             }, count)
         after = self.provider.nodes(tag_filters=tag_filters)
