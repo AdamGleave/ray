@@ -12,7 +12,7 @@ AUTOSCALER_MAX_NUM_FAILURES = 5
 # The maximum number of nodes to launch in a single request.
 # Multiple requests may be made for this batch size, up to
 # the limit of AUTOSCALER_MAX_CONCURRENT_LAUNCHES.
-AUTOSCALER_MAX_LAUNCH_BATCH = 5
+AUTOSCALER_MAX_LAUNCH_BATCH = 1
 
 # Max number of nodes to launch at a time.
 AUTOSCALER_MAX_CONCURRENT_LAUNCHES = 10
@@ -25,4 +25,4 @@ AUTOSCALER_UPDATE_INTERVAL_S = 5
 AUTOSCALER_HEARTBEAT_TIMEOUT_S = 30
 
 # Max number of retries to AWS (default is 5, time increases exponentially)
-BOTO_MAX_RETRIES = 12
+BOTO_MAX_RETRIES = 4
