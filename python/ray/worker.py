@@ -2490,7 +2490,7 @@ def compute_function_id(func_name, func):
     try:
         # If we are running a script or are in IPython, include the source code
         # in the hash.
-        source = inspect.getsource(function).encode("ascii")
+        source = inspect.getsource(func).encode("ascii")
         function_id_hash.update(source)
     except (IOError, OSError, TypeError):
         # Source code may not be available: e.g. Cython or Python interpreter.
